@@ -211,10 +211,33 @@ public class ArrayPrograms {
 	
 	//
 	
+	
+	// shift all zeroes in array to end.
+	
+	public static void shiftingZero() {
+		
+		
+		int[] arr = {3,4,5,0,4,7,8,0,9,4,5};
+		int len = arr.length;  //11
+		int[] zeroarra = new int[len];
+		int count = 0;
+		for (int i : arr) {
+			if (i!=0) {
+				zeroarra[count] = i;
+				count+=1;
+			}
+		}
+		
+		for (int i : zeroarra) {
+			System.out.println(i);
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		sortArray();
+		shiftingZero();
 		
 		/*
 		 * String s1 = "Sachin"; String s2 = "Tendulkar"; String s3 = 10+10 +

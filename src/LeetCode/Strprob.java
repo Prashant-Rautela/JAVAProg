@@ -151,17 +151,155 @@ public class Strprob {
 		return false;
 	}
 	
-	//
+	// input: aaabbcccaa   output: a3b2c3a2
+	
+	public static void countLetters() {
+		
+		String input = "aaabbcccab";
+		char[] carray = input.toCharArray();
+		int len = carray.length;
+		int count = 1;
+		//0-8
+		
+		for (int i=0; i<carray.length-2;i++) {
+			
+			if (carray[i] == carray[i+1]) {
+				
+				count = count + 1;
+				
+			}
+			
+			else if (carray[i] != carray[i+1]) {
+				
+				System.out.print(carray[i]);
+				System.out.print(count);
+				count = 1;
+			}
+			
+						
+		}
+		
+		if (carray[len-2] != carray[len-1]) {
+			
+			
+			System.out.print(carray[len-2]);
+			System.out.print(count);
+			
+			System.out.print(carray[len-1]);
+			System.out.print(count);
+			
+			
+		}
+		
+		else {
+			System.out.print(carray[len-2]);
+			System.out.print(count+1);
+			
+		}
+		
+		
+		
+	}
+	
+	// merge strings alternately
+	//Input: word1 = "abc", word2 = "pqr"
+	//Output: "apbqcr"
 
+	public static void mergeStrings(String word1, String word2) {
+		
+		int word1_len = word1.length();
+		int word2_len = word2.length();
+		int finalString_len = word1_len>=word2_len ? word2_len : word1_len;
+		String finalString="";
+		
+		for (int i=0; i< finalString_len;i++) {
+			
+			finalString = finalString + word1.charAt(i) + word2.charAt(i);
+			
+		}
+		
+		if (word1_len > finalString_len) {
+			finalString = finalString + word1.substring(finalString_len);
+		}
+		
+		if (word2_len > finalString_len) {
+			finalString = finalString + word2.substring(finalString_len);
+		}
+		
+		System.out.println(finalString);
+	}
+	
+	// sort the person as per height
+	//input: names = ["Mary","John","Emma"], heights = [180,165,170]
+	//output: ["Mary","Emma","John"]
+	
+	
+	public static void sortPerson(String[] names, String[] heights) {
+		
+		HashMap<String, String> heightMap = new HashMap<String, String>();
+				
+		
+		for (int i=0; i<names.length; i++) {
+			heightMap.put(heights[i], names[i]);
+		}
+		Collections.sort(Arrays.asList(heights));
+		for (int i = heights.length-1; i>=0; i--) {
+			System.out.println(heightMap.get(heights[i]) + ": "+heights[i]);	
+		}
+		
+			
+		
+	}
+	
+	
+	//optimal partition of strings
+	
+	// @ https://leetcode.com/problems/optimal-partition-of-string/
+	
+	public static void optimalPartitionsOfStrings() {
+		
+		
+		//String s = "abacaba" ;
+		String s = "sssss" ;
+		int n = s.length();
+
+		
+		HashSet<Character> hset = new HashSet<>();
+		int temp = 1;
+
+		for (int i = 0; i < n; i++) {
+
+			if (! hset.add(s.charAt(i))){
+				
+				temp = temp + 1;
+				hset.clear();
+				hset.add(s.charAt(i));
+				
+			}
+			
+			
+		}
+		System.out.println(temp);
+		
+			
+		
+	}
+	
+	
 	public static void main(String[] args) {
 		//findSubStrings("LLLLRRRR");
 		
-		String s = "abc";
-		int[] indices = {0,1,2};
+		/*
+		 * String s = "abc"; int[] indices = {0,1,2};
+		 * 
+		 * restoreString(s, indices);
+		 */
 		
-		restoreString(s, indices);
+		//String[] names = {"Mary","John","Emma"};
+	    //String[] heights = {"180","165","170"};
+		//sortPerson(names, heights);
 		
-		
+		optimalPartitionsOfStrings();
 
 	}
 
